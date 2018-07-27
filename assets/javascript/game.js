@@ -96,3 +96,64 @@ function startGame()
 	document.getElementById('wrongGuesses').innerHTML = wrongLetters;
 }
 
+function compareLetters(userKey)
+{
+				if(choosenWord.indexOf(userKey) > -1)
+				{
+					for(var i = 0; i < numBlanks; i++)
+					{
+						if(lettersInWord[i] === userKey)
+						{
+							rightGuessCounter++;
+							blanksAndSuccesses[i] = userKey;
+							document.getElementById('wordToGuess').innerHTML = blanksAndSuccesses.join(' ');
+						}	
+					}
+				}
+				else
+				{
+					wrongLetters.push(userKey);
+					guessesLeft--;
+					document.getElementById('numGuesses').innerHTML = guessesLeft;
+					document.getElementById('wrongGuesses').innerHTML = wrongLetters;
+				}
+            
+}		
+
+function winLose()
+{
+	if(rightGuessCounter === numBlanks)
+	{
+		winCount++;
+		document.getElementById('winCounter').innerHTML = winCount;
+		alert('You Win');
+		reset();
+	}
+	else if(guessesLeft === 0)
+	{
+		loseCount++;
+		document.getElementById('lossCounter').innerHTML = loseCount;
+		alert('You Lose');
+		reset();
+	}
+}
+
+startGame();
+
+document.onkeyup = function(event)
+{
+	test = true;
+	var letterGuessed = event.key;
+	for(var i = 0; i < doubleWord.length; i++)
+	{	
+		if(letterGuessed === doubleWord[i] && test === true)
+		{
+			var spliceDword = doubleWord.splice(i,1);
+
+			compareLetters(letterGuessed);
+			winLose();
+		}
+	}		
+		
+}
+
