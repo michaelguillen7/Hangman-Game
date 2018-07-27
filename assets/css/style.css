@@ -1,0 +1,25 @@
+body {
+    background-image: url(http://samanthas.co/wp-content/uploads/2017/11/wood-basketball-floor-nice-within.jpg);
+    background-position: center center;
+}
+
+header {
+    border: 3px solid white;
+    text-align: center;
+    color: black;
+    margin: 20px auto;
+}
+
+.jumbotron-fluid {
+    background-color: transparent;
+}
+
+.panel-default {
+    border: 3px solid white;
+    text-align: center;
+    width: 69%;
+    height: 84px;
+    background-color: transparent;
+    font-size: 28px;
+    margin: 20px auto;
+}
